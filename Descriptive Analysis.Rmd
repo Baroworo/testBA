@@ -1,0 +1,50 @@
+---
+title: "Descriptive Analysis"
+author: "Basit Aroworowon"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(readxl)
+Dry_Bean_Dataset <- read_excel("Dry_Bean_Dataset.xlsx")
+View(Dry_Bean_Dataset)
+ head(Dry_Bean_Dataset)
+data <- na.omit(Dry_Bean_Dataset)
+View(data)
+```
+
+### 3. Data Handling
+```{r}
+str(Dry_Bean_Dataset)
+dim(Dry_Bean_Dataset)
+scaled_data <- Dry_Bean_Dataset %>% 
+  mutate(across(where(is.numeric), scale))
+transformed_data <- Dry_Bean_Dataset %>% 
+  mutate(across(where(is.numeric), log))
+
+
+```
+### 4. Descriptive Analysis
+
+```{r}
+summary(Dry_Bean_Dataset)
+library(ggplot2)
+ggplot(data, aes(x = Area, y = Perimeter)) +
+  geom_boxplot()
+```
+
+
+```
+
+```
+
+
+
+
+```
+
